@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
 import ArticleDetail from '../components/article/ArticleDetail.vue';
+import PageHeader from '../components/PageHeader.vue';
 
 const route = useRoute();
 
@@ -20,13 +21,11 @@ const article = {
 
 呜草，呜呜呜草，呜呜呜
 `,
-  author: {
-    id: '0',
-    name: 'Iori'
-  }
+  author: 'Iori'
 };
 </script>
 
 <template>
+  <PageHeader :title="article.title" />
   <ArticleDetail :article="article" />
 </template>

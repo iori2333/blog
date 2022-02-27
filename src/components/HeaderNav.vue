@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 
+import SimpleButton from './common/SimpleButton.vue';
+
 const route = useRoute();
-const onSearch = (event: KeyboardEvent) => {
-  const keyword = (event.target as HTMLInputElement).value;
-  console.log(keyword);
-};
+const keyword = ref('');
+
+const onSearch = (keyword: string) => console.log(keyword);
 </script>
 
 <template>
@@ -28,8 +30,12 @@ const onSearch = (event: KeyboardEvent) => {
       </RouterLink>
     </nav>
     <div class="info-box">
-      <input placeholder="Search articles" @keyup.enter="onSearch" />
-      <img src="../assets/logo.png" width="30" height="30" />
+      <input
+        placeholder="Search articles"
+        v-model="keyword"
+        @keyup.enter="onSearch(keyword)"
+      />
+      <SimpleButton icon="search" @click="onSearch(keyword)" />
     </div>
   </header>
 </template>
@@ -78,20 +84,20 @@ const onSearch = (event: KeyboardEvent) => {
 
   .info-box {
     display: flex;
-    flex-direction: row-reverse;
     justify-content: flex-end;
+    align-items: center;
 
     input {
       border: none;
-      background-color: #f0f0f0;
+      background-color: #f0f0f094;
       border-radius: 6px;
-      margin-left: 10px;
       transition: 0.6s;
+      height: 30px;
 
       &:focus {
         border: none;
         outline: none;
-        background-color: #e2e2e2;
+        background-color: #e2e2e286;
       }
     }
   }

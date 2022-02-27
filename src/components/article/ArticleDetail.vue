@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { defineProps, nextTick, ref } from 'vue';
+import { defineProps, nextTick, onBeforeUnmount, ref } from 'vue';
 import { Article } from '../../models/article';
 import 'github-markdown-css';
 
 import { convertMd } from '../../util/markdown';
+import { formatDate } from '../../util/date';
 import CardContainer from '../common/CardContainer.vue';
-import PageHeader from '../PageHeader.vue';
 import LinkItem from '../common/LinkItem.vue';
 
 const { article } = defineProps<{
@@ -25,20 +25,24 @@ nextTick(() => {
     const index = anchors.findIndex(
       value => value > document.documentElement.scrollTop
     );
-    console.log(index);
     active.value = content[index].anchor;
-    console.log(active.value);
   };
 
   window.onscroll = updateAnchor;
   updateAnchor();
 });
+
+onBeforeUnmount(() => {
+  window.onscroll = null;
+});
 </script>
 
 <template>
-  <PageHeader :title="article.title" />
   <div class="detail-container">
     <CardContainer class="article-body">
+      <span class="description">
+        本文由{{ article.author }}发布于{{ formatDate(article.timestamp) }}
+      </span>
       <article class="markdown-body" v-html="rendered" />
     </CardContainer>
     <div class="tile-container">
@@ -63,6 +67,12 @@ nextTick(() => {
 
   .article-body {
     flex: 1;
+
+    .description {
+      font-weight: lighter;
+      padding-bottom: 10px;
+      font-size: 14px;
+    }
   }
 
   .tile-container {

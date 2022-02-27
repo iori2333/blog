@@ -36,7 +36,7 @@ const onClick = () => {
       <img v-if="article.img" :src="article.img" :alt="article.title" />
     </div>
     <div class="actions">
-      <span>作者: {{ article.author.name }}</span>
+      <span>作者: {{ article.author }}</span>
       <span>发布时间: {{ formatDate(article.timestamp) }}</span>
       <span>评论: 0</span>
     </div>

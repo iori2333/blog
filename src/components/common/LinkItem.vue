@@ -27,6 +27,10 @@ a {
   width: fit-content;
   line-height: 2rem;
 
+  .codicon {
+    padding-right: 6px;
+  }
+
   span:hover {
     text-decoration: underline;
   }

@@ -1,9 +1,7 @@
-import { Author } from './author';
-
 export interface Article {
   id: string;
   title: string;
-  author: Author;
+  author: string;
   timestamp: number;
   tags?: string[];
   img?: string;

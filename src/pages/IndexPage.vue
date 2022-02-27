@@ -7,10 +7,7 @@ const article = {
   title: '博客激情编写中',
   timestamp: new Date().getTime(),
   content: `哼哼哼，啊啊啊啊啊啊啊啊啊啊啊啊`,
-  author: {
-    id: '0',
-    name: 'Iori'
-  }
+  author: 'Iori'
 };
 
 const articles = [
