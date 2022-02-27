@@ -1,27 +1,26 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
 import ArticleDetail from '../components/article/ArticleDetail.vue';
 import { Article } from '../models/article';
-import { get } from '../util/network';
-import SkeletonCard from '../components/SkeletonCard.vue';
 
-const article = ref(null as Article | null);
+const content = `
+# Iori
 
-onMounted(() => {
-  get('/static/me.md').then(
-    r =>
-      (article.value = {
-        id: '-1',
-        title: '关于我',
-        content: r.data,
-        author: 'Iori',
-        timestamp: new Date(2022, 2, 28, 3, 8).getTime()
-      })
-  );
-});
+![me](https://avatars.githubusercontent.com/u/81511507?v=4)
+
+> 電子の海を漂うオタク
+
+南京大学2019级通信工程本科生，废物是也。
+`.trim();
+
+const article: Article = {
+  id: '-1',
+  title: '关于我',
+  content,
+  author: 'Iori',
+  timestamp: new Date(2022, 2, 28, 3, 8).getTime()
+};
 </script>
 
 <template>
-  <ArticleDetail v-if="article" :article="article" />
-  <SkeletonCard v-else />
+  <ArticleDetail :article="article" />
 </template>
