@@ -5,6 +5,7 @@ import CardContainer from '../common/CardContainer.vue';
 import { Article } from '../../models/article';
 import ArticleTile from '../article/ArticleTile.vue';
 import RecentTile from '../tiles/RecentTile.vue';
+import TagTile from '../tiles/TagTile.vue';
 
 const { articles } = defineProps<{
   articles: Article[];
@@ -22,7 +23,8 @@ const { articles } = defineProps<{
     </div>
     <div class="detail-container">
       <RecentTile />
-      <CardContainer sticky top="64px"> 1234 </CardContainer>
+      <TagTile />
+      <CardContainer sticky top="64px" title="Links">Link1</CardContainer>
     </div>
   </div>
 </template>
@@ -37,7 +39,6 @@ const { articles } = defineProps<{
   flex-direction: column;
   width: 300px;
   margin-left: 10px;
-  height: min-content;
 }
 
 @media (max-width: 1020px) {

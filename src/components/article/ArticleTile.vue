@@ -43,14 +43,13 @@ const onClick = () => {
 .card-item {
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 10px;
 
   .text-preview {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
+    padding-bottom: 10px;
 
     img {
       width: 60px;

@@ -17,7 +17,7 @@ const { title, sticky, top } = defineProps<{
       top
     }"
   >
-    <span v-if="title" class="title" @click="onClick">{{ title }}</span>
+    <div v-if="title" class="title" @click="onClick">{{ title }}</div>
     <slot />
   </div>
 </template>
@@ -31,6 +31,7 @@ const { title, sticky, top } = defineProps<{
   border-radius: 4px;
   background-color: #fff;
   transition: 0.2s;
+  margin-bottom: 10px;
 
   &:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -39,6 +40,7 @@ const { title, sticky, top } = defineProps<{
   .title {
     font-size: 24px;
     font-weight: bold;
+    padding-bottom: 10px;
     width: fit-content;
     &:hover {
       text-decoration: underline dashed;

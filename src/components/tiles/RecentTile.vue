@@ -26,17 +26,14 @@ const recent = [
 </template>
 
 <style scoped lang="scss">
-.recent-tile {
-  margin-bottom: 10px;
-  a {
-    color: var(--primary-color);
-    text-decoration: none;
-    margin-top: 10px;
-    width: fit-content;
+.recent-tile > a {
+  color: var(--primary-color);
+  text-decoration: none;
+  width: fit-content;
+  line-height: 2rem;
 
-    &:hover {
-      text-decoration: underline;
-    }
+  &:hover {
+    text-decoration: underline;
   }
 }
 </style>

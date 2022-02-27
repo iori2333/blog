@@ -16,11 +16,14 @@ const onSearch = (event: KeyboardEvent) => {
       </RouterLink>
       <RouterLink
         to="/archive"
-        :class="route.name == 'archives' ? 'active' : ''"
+        :class="route.fullPath.startsWith('/archive') ? 'active' : ''"
       >
         文章
       </RouterLink>
-      <RouterLink to="/me" :class="route.name == 'me' ? 'active' : ''">
+      <RouterLink
+        to="/me"
+        :class="route.fullPath.startsWith('/me') ? 'active' : ''"
+      >
         关于我
       </RouterLink>
     </nav>
