@@ -1,0 +1,77 @@
+<script setup lang="ts">
+import { defineProps } from 'vue';
+import { formatDate } from '../../util/date';
+import { Article } from '../../models/article';
+import CardContainer from '../common/CardContainer.vue';
+
+const { article } = defineProps<{
+  article: Article;
+}>();
+
+const handleText = (text: string) => {
+  let pos = text.indexOf('\n');
+  if (pos === -1) {
+    pos = text.length;
+  }
+  let send = text.substring(0, Math.min(pos, 100));
+  if (send.length < pos) {
+    send += '...';
+  }
+  return send;
+};
+
+const onClick = () => {
+  console.log(article);
+};
+</script>
+
+<template>
+  <CardContainer class="card-item" :title="article.title" @click="onClick">
+    <div class="text-preview">
+      <div>{{ handleText(article.content) }}</div>
+      <img v-if="article.img" :src="article.img" :alt="article.title" />
+    </div>
+    <div class="actions">
+      <span>作者: {{ article.author.name }}</span>
+      <span>发布时间: {{ formatDate(article.timestamp) }}</span>
+      <span>评论: 0</span>
+    </div>
+  </CardContainer>
+</template>
+
+<style scoped lang="scss">
+.card-item {
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 10px;
+
+  .text-preview {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+
+    img {
+      width: 60px;
+      height: 60px;
+      padding: 0 10px;
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    span {
+      margin-right: 1rem;
+      font-size: 14px;
+      font-weight: lighter;
+    }
+
+    border-top: 1px solid var(--border-color);
+    padding-top: 1rem;
+  }
+}
+</style>
