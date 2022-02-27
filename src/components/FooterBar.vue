@@ -12,7 +12,7 @@ const onClick = () => window.open('https://github.com/iori2333');
 
 <style scoped lang="scss">
 .footer {
-  background: url('../assets/footer.jpg') center center no-repeat;
+  background: url('../assets/footer.webp') center center no-repeat;
   background-size: cover;
   line-height: 2rem;
   color: #fcfcfc;

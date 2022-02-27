@@ -45,7 +45,7 @@ const onSearch = (event: KeyboardEvent) => {
   align-items: center;
   height: 52px;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: saturate(180%) blur(20px);
   padding: 0 10em;
   border-bottom: 1px var(--border-color) solid;

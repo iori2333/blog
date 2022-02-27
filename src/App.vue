@@ -13,6 +13,10 @@ import FooterBar from './components/FooterBar.vue';
 </template>
 
 <style lang="scss">
+html {
+  scroll-padding-top: 64px;
+}
+
 body {
   background-color: #f7f7f7;
   overflow-y: overlay;

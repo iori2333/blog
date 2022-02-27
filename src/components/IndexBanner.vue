@@ -6,7 +6,11 @@ const show = ref(true);
 
 onMounted(() => {
   window.onwheel = (event: WheelEvent) => {
-    if (event.deltaY < 0 && document.documentElement.scrollTop == 0) {
+    if (
+      document.documentElement.scrollTop == 0 &&
+      event.deltaY < 0 &&
+      !show.value
+    ) {
       show.value = true;
     }
   };
@@ -26,7 +30,7 @@ onBeforeUnmount(() => {
 
 <style scoped lang="scss">
 .banner {
-  background: url('../assets/banner.jpg') center center no-repeat;
+  background: url('../assets/banner.webp') center center no-repeat;
   background-size: cover;
   height: min(calc(80vh - 64px), 600px);
   justify-content: center;
@@ -60,6 +64,12 @@ onBeforeUnmount(() => {
       cursor: pointer;
     }
     z-index: 1;
+  }
+}
+
+@media (max-width: 720px) {
+  .banner {
+    align-items: flex-start;
   }
 }
 </style>

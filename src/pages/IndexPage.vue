@@ -2,7 +2,8 @@
 import IndexBanner from '../components/IndexBanner.vue';
 import ArticleList from '../components/article/ArticleList.vue';
 
-const artcile = {
+const article = {
+  id: '1',
   title: '博客激情编写中',
   timestamp: new Date().getTime(),
   content: `哼哼哼，啊啊啊啊啊啊啊啊啊啊啊啊`,
@@ -13,14 +14,14 @@ const artcile = {
 };
 
 const articles = [
-  artcile,
-  artcile,
-  artcile,
-  artcile,
-  artcile,
-  artcile,
-  artcile,
-  artcile
+  article,
+  article,
+  article,
+  article,
+  article,
+  article,
+  article,
+  article
 ];
 </script>
 

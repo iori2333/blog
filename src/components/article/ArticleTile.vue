@@ -3,6 +3,9 @@ import { defineProps } from 'vue';
 import { formatDate } from '../../util/date';
 import { Article } from '../../models/article';
 import CardContainer from '../common/CardContainer.vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const { article } = defineProps<{
   article: Article;
@@ -22,6 +25,7 @@ const handleText = (text: string) => {
 
 const onClick = () => {
   console.log(article);
+  router.push(`/archive/view/${article.id}`);
 };
 </script>
 

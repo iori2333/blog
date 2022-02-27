@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 
-import CardContainer from '../common/CardContainer.vue';
 import { Article } from '../../models/article';
 import ArticleTile from '../article/ArticleTile.vue';
 import RecentTile from '../tiles/RecentTile.vue';
 import TagTile from '../tiles/TagTile.vue';
+import LinkTile from '../tiles/LinkTile.vue';
 
 const { articles } = defineProps<{
   articles: Article[];
@@ -21,10 +21,10 @@ const { articles } = defineProps<{
         :article="article"
       />
     </div>
-    <div class="detail-container">
+    <div class="tile-container">
       <RecentTile />
       <TagTile />
-      <CardContainer sticky top="64px" title="Links">Link1</CardContainer>
+      <LinkTile />
     </div>
   </div>
 </template>
@@ -35,14 +35,14 @@ const { articles } = defineProps<{
   justify-content: space-between;
 }
 
-.detail-container {
+.tile-container {
   flex-direction: column;
   width: 300px;
   margin-left: 10px;
 }
 
 @media (max-width: 1020px) {
-  .detail-container {
+  .tile-container {
     display: none;
   }
 }

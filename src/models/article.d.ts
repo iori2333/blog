@@ -1,6 +1,7 @@
 import { Author } from './author';
 
 export interface Article {
+  id: string;
   title: string;
   author: Author;
   timestamp: number;
