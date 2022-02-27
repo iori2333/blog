@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
+    "build-preview": "vue-tsc --noEmit && vite build --base=/blog/",
     "preview": "vite preview"
   },
   "dependencies": {
