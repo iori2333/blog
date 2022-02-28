@@ -1,5 +1,5 @@
 import { createVNode, render } from 'vue';
-import ToastMessage from '../common/ToastMessage.vue';
+import ToastMessage from '../components/common/ToastMessage.vue';
 
 const toast = (
   message: string,

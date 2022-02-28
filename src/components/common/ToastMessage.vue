@@ -54,8 +54,8 @@ const icon = computed(() => {
   justify-content: center;
   align-items: center;
   top: 64px;
-  left: 0;
-  right: 0;
+  z-index: 100;
+  transform: translate(calc(50vw - 50%), 0);
   opacity: 0;
   transition: opacity 0.4s;
   .toast-message {

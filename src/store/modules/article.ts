@@ -1,8 +1,9 @@
 import { Module } from 'vuex';
-import { fetchArticles } from '../../api/article';
-import useToast from '../../components/hooks/useToast';
-import { Article } from '../../models/article';
 import { RootState } from '../store';
+
+import { fetchArticles } from '../../api/article';
+import { useToast } from '../../hooks';
+import { Article } from '../../models/article';
 
 export interface ArticleState {
   articles: Article[];

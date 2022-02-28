@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { onMounted } from 'vue';
+import { useToast } from '../hooks';
+
 import PageHeader from '../components/common/PageHeader.vue';
 import CardContainer from '../components/common/CardContainer.vue';
-import { onMounted } from 'vue';
-import useToast from '../components/hooks/useToast';
 
 const toast = useToast();
 onMounted(() =>
@@ -34,6 +35,12 @@ onMounted(() =>
     font-size: 60px;
     text-decoration: underline;
     padding: 20px;
+  }
+
+  @media (max-width: 720px) {
+    .title {
+      font-size: 32px;
+    }
   }
 }
 </style>

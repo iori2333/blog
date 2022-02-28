@@ -7,7 +7,10 @@ import SimpleButton from './common/SimpleButton.vue';
 const route = useRoute();
 const keyword = ref('');
 
-const onSearch = (keyword: string) => console.log(keyword);
+const onSearch = () => {
+  console.log(keyword.value);
+  keyword.value = '';
+};
 </script>
 
 <template>
@@ -33,9 +36,9 @@ const onSearch = (keyword: string) => console.log(keyword);
       <input
         placeholder="Search articles"
         v-model="keyword"
-        @keyup.enter="onSearch(keyword)"
+        @keyup.enter="onSearch()"
       />
-      <SimpleButton icon="search" @click="onSearch(keyword)" />
+      <SimpleButton icon="search" @click="onSearch()" />
     </div>
   </header>
 </template>
