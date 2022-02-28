@@ -3,22 +3,18 @@ import { onBeforeUnmount, onMounted, ref } from 'vue';
 import CardContainer from './common/CardContainer.vue';
 
 const show = ref(true);
+const onWheel = (event: WheelEvent) => {
+  if (
+    document.documentElement.scrollTop == 0 &&
+    event.deltaY < 0 &&
+    !show.value
+  ) {
+    show.value = true;
+  }
+};
 
-onMounted(() => {
-  window.onwheel = (event: WheelEvent) => {
-    if (
-      document.documentElement.scrollTop == 0 &&
-      event.deltaY < 0 &&
-      !show.value
-    ) {
-      show.value = true;
-    }
-  };
-});
-
-onBeforeUnmount(() => {
-  window.onwheel = null;
-});
+onMounted(() => document.addEventListener('wheel', onWheel));
+onBeforeUnmount(() => document.removeEventListener('wheel', onWheel));
 </script>
 
 <template>

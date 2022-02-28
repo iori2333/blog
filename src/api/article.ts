@@ -32,7 +32,7 @@ export const fetchArticles = async () => {
     article
   ];
   articles.sort((a, b) => {
-    return a.pinned == b.pinned ? a.timestamp - b.timestamp : b.pinned ? 1 : -1;
+    return a.pinned == b.pinned ? b.timestamp - a.timestamp : b.pinned ? 1 : -1;
   });
   return articles;
 };

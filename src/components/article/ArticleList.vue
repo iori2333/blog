@@ -3,7 +3,7 @@ import { defineProps } from 'vue';
 
 import { Article } from '../../models/article';
 import ArticleTile from '../article/ArticleTile.vue';
-import SkeletonCard from '../SkeletonCard.vue';
+import SkeletonCard from '../common/SkeletonCard.vue';
 
 const { articles } = defineProps<{
   articles: Article[];
@@ -12,14 +12,14 @@ const { articles } = defineProps<{
 
 <template>
   <div class="article-wrapper">
-    <div style="flex: 1">
+    <div v-if="articles.length" style="flex: 1">
       <ArticleTile
         v-for="(article, index) in articles"
         :key="index"
         :article="article"
       />
-      <SkeletonCard v-if="!articles.length" />
     </div>
+    <SkeletonCard v-if="!articles.length" style="flex: 1" />
     <div class="tile-container">
       <slot />
     </div>

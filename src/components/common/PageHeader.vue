@@ -2,8 +2,8 @@
 import { computed, defineProps } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
-import CardContainer from './common/CardContainer.vue';
-import SimpleButton from './common/SimpleButton.vue';
+import CardContainer from './CardContainer.vue';
+import SimpleButton from './SimpleButton.vue';
 
 const { title } = defineProps<{
   title?: string;

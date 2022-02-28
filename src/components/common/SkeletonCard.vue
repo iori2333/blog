@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import CardContainer from './common/CardContainer.vue';
+import CardContainer from './CardContainer.vue';
 
 const { repeat } = defineProps<{
   repeat?: number;

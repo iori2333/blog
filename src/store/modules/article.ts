@@ -1,5 +1,6 @@
 import { Module } from 'vuex';
 import { fetchArticles } from '../../api/article';
+import useToast from '../../components/hooks/useToast';
 import { Article } from '../../models/article';
 import { RootState } from '../store';
 
@@ -21,7 +22,10 @@ export const article: Module<ArticleState, RootState> = {
   },
   actions: {
     fetchArticles({ commit }) {
-      fetchArticles().then(articles => commit('SET', articles));
+      const toast = useToast();
+      fetchArticles()
+        .then(articles => commit('SET', articles))
+        .catch(err => toast.error(err.message));
     }
   }
 };

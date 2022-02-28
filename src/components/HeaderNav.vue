@@ -17,7 +17,7 @@ const onSearch = (keyword: string) => console.log(keyword);
         首页
       </RouterLink>
       <RouterLink
-        to="/"
+        to="/archive/tag"
         :class="route.fullPath.startsWith('/archive') ? 'active' : ''"
       >
         文章

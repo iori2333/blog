@@ -16,9 +16,14 @@ const routes = [
     component: () => import('../pages/ArticleViewPage.vue')
   },
   {
+    path: '/archive/tag',
+    name: 'all tags',
+    redirect: '/archive/tag/all'
+  },
+  {
     path: '/archive/tag/:tag',
     name: 'tag',
-    component: () => import('../pages/MyPage.vue')
+    component: () => import('../pages/ArticleTagPage.vue')
   },
   {
     path: '/me',

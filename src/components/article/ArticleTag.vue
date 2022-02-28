@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
+import { useRouter } from 'vue-router';
 import { textColor } from '../../util/color';
 
 const { name, color } = defineProps<{
@@ -7,9 +8,9 @@ const { name, color } = defineProps<{
   color?: string;
 }>();
 
-const onClick = () => {
-  console.log(name);
-};
+const router = useRouter();
+
+const onClick = () => router.push('/archive/tag/' + name);
 </script>
 
 <template>

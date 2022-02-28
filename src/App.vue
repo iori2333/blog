@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import NavHeader from './components/HeaderNav.vue';
-import { RouterView } from 'vue-router';
-import FooterBar from './components/FooterBar.vue';
 import { onMounted } from 'vue';
+import { RouterView } from 'vue-router';
 import { useStore } from './store';
+
+import NavHeader from './components/HeaderNav.vue';
+import FooterBar from './components/FooterBar.vue';
+import BackTop from './components/BackTop.vue';
 
 const store = useStore();
 
@@ -15,12 +17,14 @@ onMounted(() => store.dispatch('fetchArticles'));
   <div id="main">
     <RouterView />
     <FooterBar />
+    <BackTop />
   </div>
 </template>
 
 <style lang="scss">
 html {
   scroll-padding-top: 64px;
+  scroll-behavior: smooth;
 }
 
 body {

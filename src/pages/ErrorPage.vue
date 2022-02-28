@@ -1,6 +1,13 @@
 <script setup lang="ts">
-import PageHeader from '../components/PageHeader.vue';
+import PageHeader from '../components/common/PageHeader.vue';
 import CardContainer from '../components/common/CardContainer.vue';
+import { onMounted } from 'vue';
+import useToast from '../components/hooks/useToast';
+
+const toast = useToast();
+onMounted(() =>
+  toast.error('404 Not Found: The page you are looking for does not exist.')
+);
 </script>
 
 <template>

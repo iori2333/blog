@@ -4,8 +4,8 @@ import { useRoute } from 'vue-router';
 import { useStore } from '../store';
 
 import ArticleDetail from '../components/article/ArticleDetail.vue';
-import PageHeader from '../components/PageHeader.vue';
-import SkeletonCard from '../components/SkeletonCard.vue';
+import PageHeader from '../components/common/PageHeader.vue';
+import SkeletonCard from '../components/common/SkeletonCard.vue';
 
 const route = useRoute();
 const store = useStore();
