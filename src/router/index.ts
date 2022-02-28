@@ -8,7 +8,10 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import('../pages/IndexPage.vue')
+    component: () => import('../pages/IndexPage.vue'),
+    meta: {
+      title: 'Home'
+    }
   },
   {
     path: '/archive/view/:id',
@@ -28,12 +31,18 @@ const routes = [
   {
     path: '/me',
     name: 'me',
-    component: () => import('../pages/MyPage.vue')
+    component: () => import('../pages/MyPage.vue'),
+    meta: {
+      title: 'Me'
+    }
   },
   {
     path: '/:pathMatch(.*)*',
     name: 'error',
-    component: () => import('../pages/ErrorPage.vue')
+    component: () => import('../pages/ErrorPage.vue'),
+    meta: {
+      title: 'Error'
+    }
   }
 ] as RouteRecordRaw[];
 
@@ -45,6 +54,9 @@ export const router = createRouter({
 router.beforeEach((to, from, next) => {
   NProgress.start();
   next();
+  if (to.meta.title) {
+    document.title = to.meta.title as string;
+  }
 });
 
 router.afterEach(() => {

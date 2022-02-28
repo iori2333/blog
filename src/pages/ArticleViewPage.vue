@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from '../store';
 
@@ -12,6 +12,14 @@ const store = useStore();
 
 const article = computed(() =>
   store.state.article.articles.find(a => a.id == route.params.id)
+);
+
+watch(
+  article,
+  () => {
+    document.title = article.value?.title ?? 'Loading...';
+  },
+  { immediate: true }
 );
 </script>
 

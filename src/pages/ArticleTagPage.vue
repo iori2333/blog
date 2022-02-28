@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useStore } from '../store';
 
 import TagTile from '../components/tiles/TagTile.vue';
@@ -20,6 +20,8 @@ const articles = computed(() => {
     article.tags?.includes(tag)
   );
 });
+
+onMounted(() => (document.title = `Tag: ${route.params.tag}`));
 </script>
 
 <template>
