@@ -14,8 +14,8 @@ export const article: Module<ArticleState, RootState> = {
     articles: [] as Article[]
   },
   mutations: {
-    APPEND(state, article: Article) {
-      state.articles.push(article);
+    APPEND(state, ...article: Article[]) {
+      state.articles.push(...article);
     },
     SET(state, articles: Article[]) {
       state.articles = articles;
@@ -26,6 +26,12 @@ export const article: Module<ArticleState, RootState> = {
       const toast = useToast();
       fetchArticles()
         .then(articles => commit('SET', articles))
+        .catch(err => toast.error(err.message));
+    },
+    appendArticles({ commit }, page: number) {
+      const toast = useToast();
+      fetchArticles(page)
+        .then(articles => commit('APPEND', ...articles))
         .catch(err => toast.error(err.message));
     }
   }
