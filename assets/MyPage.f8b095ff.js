@@ -1,4 +1,4 @@
-import{A as e}from"./ArticleDetail.eeb958be.js";import{d as o,o as r,a}from"./vendor.c90ce3ea.js";import"./LinkItem.e7e214c3.js";import"./index.77041061.js";const A=o({setup(i){const u=`
+import{A as e}from"./ArticleDetail.a7550a50.js";import{d as o,o as r,a}from"./vendor.0c0be747.js";import"./LinkItem.38acda22.js";import"./index.c7fc4a28.js";const A=o({setup(i){const u=`
 # Iori
 
 ![me](https://avatars.githubusercontent.com/u/81511507?v=4)
