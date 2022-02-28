@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { computed, defineProps } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+
 import CardContainer from './common/CardContainer.vue';
 import SimpleButton from './common/SimpleButton.vue';
 
@@ -10,11 +11,12 @@ const { title } = defineProps<{
 
 const route = useRoute();
 const router = useRouter();
-const routes = route.fullPath.split('/');
-const base = routes.pop();
+
+const routes = computed(() => route.fullPath.split('/'));
+const base = computed(() => routes.value[routes.value.length - 1]);
 
 const onRoute = (index: number) => {
-  const jump = routes.slice(0, index + 1).join('/');
+  const jump = routes.value.slice(0, index + 1).join('/');
   router.push(jump);
 };
 </script>
@@ -22,7 +24,11 @@ const onRoute = (index: number) => {
 <template>
   <CardContainer class="navigator">
     <SimpleButton icon="arrow-left" size="20px" @click="router.back()" />
-    <div class="route" v-for="(route, index) in routes" :key="index">
+    <div
+      class="route"
+      v-for="(route, index) in routes.slice(0, routes.length - 1)"
+      :key="index"
+    >
       <span @click="onRoute(index)">{{ route }}</span>
       <div class="slash">/</div>
     </div>

@@ -11,11 +11,6 @@ const routes = [
     component: () => import('../pages/IndexPage.vue')
   },
   {
-    path: '/archive',
-    name: 'archives',
-    component: () => import('../pages/IndexPage.vue')
-  },
-  {
     path: '/archive/view/:id',
     name: 'view archive',
     component: () => import('../pages/ArticleViewPage.vue')

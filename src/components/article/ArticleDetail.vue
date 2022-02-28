@@ -72,6 +72,7 @@ onBeforeUnmount(() => {
       font-weight: lighter;
       padding-bottom: 10px;
       font-size: 14px;
+      user-select: none;
     }
   }
 

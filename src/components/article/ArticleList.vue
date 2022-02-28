@@ -3,9 +3,7 @@ import { defineProps } from 'vue';
 
 import { Article } from '../../models/article';
 import ArticleTile from '../article/ArticleTile.vue';
-import RecentTile from '../tiles/RecentTile.vue';
-import TagTile from '../tiles/TagTile.vue';
-import LinkTile from '../tiles/LinkTile.vue';
+import SkeletonCard from '../SkeletonCard.vue';
 
 const { articles } = defineProps<{
   articles: Article[];
@@ -20,11 +18,10 @@ const { articles } = defineProps<{
         :key="index"
         :article="article"
       />
+      <SkeletonCard v-if="!articles.length" />
     </div>
     <div class="tile-container">
-      <RecentTile />
-      <TagTile />
-      <LinkTile />
+      <slot />
     </div>
   </div>
 </template>

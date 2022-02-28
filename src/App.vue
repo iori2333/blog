@@ -2,6 +2,12 @@
 import NavHeader from './components/HeaderNav.vue';
 import { RouterView } from 'vue-router';
 import FooterBar from './components/FooterBar.vue';
+import { onMounted } from 'vue';
+import { useStore } from './store';
+
+const store = useStore();
+
+onMounted(() => store.dispatch('fetchArticles'));
 </script>
 
 <template>

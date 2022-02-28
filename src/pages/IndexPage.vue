@@ -1,28 +1,22 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { useStore } from '../store';
+
 import IndexBanner from '../components/IndexBanner.vue';
 import ArticleList from '../components/article/ArticleList.vue';
+import RecentTile from '../components/tiles/RecentTile.vue';
+import TagTile from '../components/tiles/TagTile.vue';
+import LinkTile from '../components/tiles/LinkTile.vue';
 
-const article = {
-  id: '1',
-  title: '博客激情编写中',
-  timestamp: new Date().getTime(),
-  content: `哼哼哼，啊啊啊啊啊啊啊啊啊啊啊啊`,
-  author: 'Iori'
-};
-
-const articles = [
-  article,
-  article,
-  article,
-  article,
-  article,
-  article,
-  article,
-  article
-];
+const store = useStore();
+const articles = computed(() => store.state.article.articles);
 </script>
 
 <template>
   <IndexBanner />
-  <ArticleList :articles="articles" />
+  <ArticleList :articles="articles">
+    <RecentTile />
+    <TagTile />
+    <LinkTile />
+  </ArticleList>
 </template>
