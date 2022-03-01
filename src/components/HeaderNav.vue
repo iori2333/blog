@@ -1,16 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 
-import SimpleButton from './common/SimpleButton.vue';
+import SearchBox from './article/ArticleSearchBox.vue';
 
 const route = useRoute();
-const keyword = ref('');
-
-const onSearch = () => {
-  console.log(keyword.value);
-  keyword.value = '';
-};
 </script>
 
 <template>
@@ -32,14 +25,7 @@ const onSearch = () => {
         关于我
       </RouterLink>
     </nav>
-    <div class="info-box">
-      <input
-        placeholder="Search articles"
-        v-model="keyword"
-        @keyup.enter="onSearch()"
-      />
-      <SimpleButton icon="search" @click="onSearch()" />
-    </div>
+    <SearchBox />
   </header>
 </template>
 
@@ -85,26 +71,6 @@ const onSearch = () => {
       }
     }
   }
-
-  .info-box {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-
-    input {
-      border: none;
-      background-color: #f0f0f094;
-      border-radius: 6px;
-      transition: 0.6s;
-      height: 30px;
-
-      &:focus {
-        border: none;
-        outline: none;
-        background-color: #e2e2e286;
-      }
-    }
-  }
 }
 
 @media (max-width: 1330px) {
@@ -116,7 +82,7 @@ const onSearch = () => {
 @media (max-width: 720px) {
   .nav-header {
     padding: 0 1rem;
-    .info-box {
+    .search-box {
       display: none;
     }
   }
