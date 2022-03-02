@@ -32,4 +32,4 @@ class LoadingBar {
   }
 }
 
-export default () => ({ loader: new LoadingBar() });
+export default () => new LoadingBar();

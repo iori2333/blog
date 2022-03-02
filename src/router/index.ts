@@ -2,7 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { archiveRoutes } from './archive';
 import useLoadingBar from '../hooks/useLoadingBar';
 
-const { loader } = useLoadingBar();
+const loader = useLoadingBar();
 
 const routes: RouteRecordRaw[] = [
   {
