@@ -6,9 +6,8 @@ import PageHeader from '../components/common/PageHeader.vue';
 import CardContainer from '../components/common/CardContainer.vue';
 
 const toast = useToast();
-onMounted(() =>
-  toast.error('404 Not Found: The page you are looking for does not exist.')
-);
+
+onMounted(() => toast.error('Request failed with status code 404'));
 </script>
 
 <template>

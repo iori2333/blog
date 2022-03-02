@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 
-import { Article } from '../../models/article';
+import { ArticlePreview } from '../../models/article';
 import ArticleTile from '../article/ArticleTile.vue';
 import SkeletonCard from '../common/SkeletonCard.vue';
 
 const { articles } = defineProps<{
-  articles: Article[];
+  articles: ArticlePreview[];
 }>();
 </script>
 

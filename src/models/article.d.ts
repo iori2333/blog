@@ -1,4 +1,4 @@
-export interface Article {
+export interface ArticlePreview {
   id: string;
   title: string;
   author: string;
@@ -6,5 +6,9 @@ export interface Article {
   tags?: string[];
   img?: string;
   pinned?: boolean;
+  preview: string;
+}
+
+export interface Article extends ArticlePreview {
   content: string;
 }

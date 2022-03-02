@@ -3,21 +3,24 @@ import { RootState } from '../store';
 
 import { fetchArticles } from '../../api/article';
 import { useToast } from '../../hooks';
-import { Article } from '../../models/article';
+import { ArticlePreview } from '../../models/article';
+import { Tag } from '../../models/tag';
 
 export interface ArticleState {
-  articles: Article[];
+  articles: ArticlePreview[];
+  tags: Record<string, Tag>;
 }
 
 export const article: Module<ArticleState, RootState> = {
   state: {
-    articles: [] as Article[]
+    articles: [] as ArticlePreview[],
+    tags: {} as Record<string, Tag>
   },
   mutations: {
-    APPEND(state, ...article: Article[]) {
+    APPEND(state, ...article: ArticlePreview[]) {
       state.articles.push(...article);
     },
-    SET(state, articles: Article[]) {
+    SET(state, articles: ArticlePreview[]) {
       state.articles = articles;
     }
   },

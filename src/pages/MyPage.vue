@@ -15,6 +15,7 @@ const content = `
 const article: Article = {
   id: '-1',
   title: '关于我',
+  preview: 'About me',
   content,
   author: 'Iori',
   timestamp: new Date(2022, 2, 28, 3, 8).getTime()

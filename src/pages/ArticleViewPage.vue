@@ -1,17 +1,27 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import { useStore } from '../store';
+import { Article } from '../models/article';
+import { useToast } from '../hooks';
+import { fetchArticle } from '../api/article';
 
 import ArticleDetail from '../components/article/ArticleDetail.vue';
 import PageHeader from '../components/common/PageHeader.vue';
 import SkeletonCard from '../components/common/SkeletonCard.vue';
 
 const route = useRoute();
-const store = useStore();
+const toast = useToast();
 
-const article = computed(() =>
-  store.state.article.articles.find(a => a.id == route.params.id)
+const article = ref(null as Article | null);
+watch(
+  () => route.params.id,
+  () => {
+    const id = route.params.id as string;
+    fetchArticle(id)
+      .then(res => (article.value = res))
+      .catch(err => toast.error(err.message));
+  },
+  { immediate: true }
 );
 
 watch(
@@ -24,7 +34,7 @@ watch(
 </script>
 
 <template>
-  <PageHeader :title="article?.title ?? 'null?'" />
+  <PageHeader :title="article?.title ?? 'Loading...'" />
   <ArticleDetail v-if="article" :article="article" />
   <SkeletonCard v-else />
 </template>

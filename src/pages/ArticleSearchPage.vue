@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import { Article } from '../models/article';
+import { ArticlePreview } from '../models/article';
 import { searchArticles } from '../api/article';
 import { useToast } from '../hooks';
 
@@ -15,7 +15,7 @@ const route = useRoute();
 const toast = useToast();
 
 const keyword = computed(() => route.params.keyword as string);
-const articles = ref([] as Article[]);
+const articles = ref([] as ArticlePreview[]);
 
 watch(keyword, () => {
   document.title = `Search: ${keyword.value}`;

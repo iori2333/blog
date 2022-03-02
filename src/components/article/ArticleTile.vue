@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 import { formatDate } from '../../util/date';
-import { Article } from '../../models/article';
+import { ArticlePreview } from '../../models/article';
 import CardContainer from '../common/CardContainer.vue';
 import { useRouter } from 'vue-router';
 import SVGIcon from '../common/SVGIcon.vue';
@@ -9,7 +9,7 @@ import SVGIcon from '../common/SVGIcon.vue';
 const router = useRouter();
 
 const { article } = defineProps<{
-  article: Article;
+  article: ArticlePreview;
 }>();
 
 const handleText = (text: string) => {
@@ -38,7 +38,7 @@ const onClick = () => {
     @click="onClick"
   >
     <div class="text-preview">
-      <div>{{ handleText(article.content) }}</div>
+      <div>{{ handleText(article.preview) }}</div>
       <img v-if="article.img" :src="article.img" :alt="article.title" />
     </div>
     <div class="actions">
