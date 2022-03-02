@@ -1,10 +1,10 @@
-import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { archiveRoutes } from './archive';
+import useLoadingBar from '../hooks/useLoadingBar';
 
-NProgress.configure({ showSpinner: false });
+const { loader } = useLoadingBar();
 
-const routes = [
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'home',
@@ -14,21 +14,6 @@ const routes = [
     }
   },
   {
-    path: '/archive/view/:id',
-    name: 'view archive',
-    component: () => import('../pages/ArticleViewPage.vue')
-  },
-  {
-    path: '/archive/tag',
-    name: 'all tags',
-    redirect: '/archive/tag/all'
-  },
-  {
-    path: '/archive/tag/:tag',
-    name: 'tag',
-    component: () => import('../pages/ArticleTagPage.vue')
-  },
-  {
     path: '/me',
     name: 'me',
     component: () => import('../pages/MyPage.vue'),
@@ -36,6 +21,7 @@ const routes = [
       title: 'Me'
     }
   },
+  ...archiveRoutes,
   {
     path: '/:pathMatch(.*)*',
     name: 'error',
@@ -44,7 +30,7 @@ const routes = [
       title: 'Error'
     }
   }
-] as RouteRecordRaw[];
+];
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -52,7 +38,7 @@ export const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  NProgress.start();
+  loader.start();
   next();
   if (to.meta.title) {
     document.title = to.meta.title as string;
@@ -60,5 +46,5 @@ router.beforeEach((to, from, next) => {
 });
 
 router.afterEach(() => {
-  NProgress.done();
+  loader.end();
 });
