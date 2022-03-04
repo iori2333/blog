@@ -2,14 +2,17 @@
 import { onMounted } from 'vue';
 import { RouterView } from 'vue-router';
 import { useStore } from './store';
+import { useBanner } from './hooks';
 
 import NavHeader from './components/HeaderNav.vue';
 import FooterBar from './components/FooterBar.vue';
 import BackTop from './components/BackTop.vue';
 
 const store = useStore();
+const banner = useBanner();
 
 onMounted(() => store.dispatch('fetchArticles'));
+onMounted(() => banner.print());
 </script>
 
 <template>
