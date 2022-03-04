@@ -1,7 +1,7 @@
 import { Module } from 'vuex';
 import { RootState } from '../store';
 
-import { fetchArticles } from '../../api/article';
+import { fetchArticles } from '../../api/static';
 import { useToast } from '../../hooks';
 import { ArticlePreview } from '../../models/article';
 import { Tag } from '../../models/tag';

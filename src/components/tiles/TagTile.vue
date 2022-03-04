@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
-import { fetchTags } from '../../api/article';
+import { onMounted, ref } from 'vue';
+import { fetchTags } from '../../api/static';
 import { useToast } from '../../hooks';
 import { Tag } from '../../models/tag';
 
@@ -15,19 +15,18 @@ onMounted(() => {
     .then(r => (tags.value = r))
     .catch(e => toast.error(e.message));
 });
-
-const allTags = computed(() =>
-  tags.value.reduce((acc, curr) => {
-    return acc + curr.count;
-  }, 0)
-);
 </script>
 
 <template>
   <CardContainer title="Tags">
     <div class="tiles">
-      <ArticleTag name="all" color="#1f1e33" :count="allTags" />
-      <ArticleTag v-for="tag in tags" :key="tag.name" {...tag} />
+      <ArticleTag name="all" color="#1f1e33" />
+      <ArticleTag
+        v-for="tag in tags"
+        :key="tag.name"
+        :name="tag.name"
+        :count="tag.count"
+      />
     </div>
   </CardContainer>
 </template>

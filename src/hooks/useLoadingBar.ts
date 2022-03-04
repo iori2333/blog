@@ -18,11 +18,12 @@ class LoadingBar {
 
   end() {
     const dom = this.node.el as HTMLDivElement;
+    const container = this.container; // in case for multiple loading bars
     const tm1 = setTimeout(() => {
       dom.classList.add('hidden');
       const tm2 = setTimeout(() => {
-        render(null, this.container);
-        document.body.removeChild(this.container);
+        render(null, container);
+        document.body.removeChild(container);
         clearTimeout(tm2);
       }, 250);
       clearInterval(tm1);

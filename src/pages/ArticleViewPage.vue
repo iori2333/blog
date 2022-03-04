@@ -3,7 +3,7 @@ import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { Article } from '../models/article';
 import { useToast } from '../hooks';
-import { fetchArticle } from '../api/article';
+import { fetchArticle } from '../api/static';
 
 import ArticleDetail from '../components/article/ArticleDetail.vue';
 import PageHeader from '../components/common/PageHeader.vue';
@@ -16,8 +16,11 @@ const article = ref(null as Article | null);
 watch(
   () => route.params.id,
   () => {
-    const id = route.params.id as string;
-    fetchArticle(id)
+    const id = route.params.id;
+    if (!id) {
+      return;
+    }
+    fetchArticle(id as string)
       .then(res => (article.value = res))
       .catch(err => toast.error(err.message));
   },

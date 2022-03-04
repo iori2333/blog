@@ -5,7 +5,7 @@ import { textColor } from '../../util/color';
 
 const { name, color } = defineProps<{
   name: string;
-  count: number;
+  count?: number;
   color?: string;
 }>();
 
@@ -23,7 +23,7 @@ const onClick = () => router.push('/archive/tag/' + name);
     }"
     @click="onClick"
   >
-    {{ name }} {{ count }}
+    {{ name }} {{ count ? count : '' }}
   </span>
 </template>
 

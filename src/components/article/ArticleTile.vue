@@ -24,10 +24,7 @@ const handleText = (text: string) => {
   return send;
 };
 
-const onClick = () => {
-  console.log(article);
-  router.push(`/archive/view/${article.id}`);
-};
+const onClick = () => router.push(`/archive/view/${article.id}`);
 </script>
 
 <template>

@@ -2,7 +2,7 @@
 import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { ArticlePreview } from '../models/article';
-import { searchArticles } from '../api/article';
+import { searchArticles } from '../api/static';
 import { useToast } from '../hooks';
 
 import TagTile from '../components/tiles/TagTile.vue';

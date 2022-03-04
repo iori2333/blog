@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { archiveRoutes } from './archive';
-import useLoadingBar from '../hooks/useLoadingBar';
+import { useLoadingBar } from '../hooks';
 
 const loader = useLoadingBar();
 
